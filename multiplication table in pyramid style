@@ -1,0 +1,6 @@
+import math
+def multiplication_num(n):
+  for i in range(1,21):
+      print(f"{n}x{i}={n*i}")
+multiplication_num(int(input("Enter any number:")))
+
