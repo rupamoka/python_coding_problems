@@ -1,0 +1,27 @@
+amount=100000
+pin=2204
+a=int(input("enter pin:"))
+if a == pin:
+    b=int(input('''
+1.deposit 
+2.withdraw 
+3.balance inquairy
+enter your choice :''' ))
+    if b==1:
+        deposit=int(input("enter deposit amount:"))
+        amount=amount+deposit
+        print(f"total amount :{amount}")
+    elif b==2:
+        withdraw=int(input("enter amount to be withdraw:"))
+        if withdraw>amount:
+            print("insufficient balance")
+        else:
+            print("amount withdrawn")
+            amount=amount-withdraw
+            print(f"remaining balance : {amount}")
+    elif b ==3:
+        print(f"amonut :{amount}")
+    else:
+        print("invalid option")
+else:
+    print("invalid pin")
