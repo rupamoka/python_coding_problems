@@ -1,0 +1,80 @@
+# Initial Setup
+seats = ["Available"] * 10   # 10 seats
+ticket_price = 150
+total_collection = 0
+
+
+# Function to show seats
+def show_seats():
+    print("\n----- Seat Status -----")
+    for i, seat in enumerate(seats, start=1):
+        print(f"Seat {i}: {seat}")
+    print()
+
+
+# Function to book ticket
+def book_ticket():
+    global total_collection
+
+    show_seats()
+    seat_no = int(input("Enter seat number to book: "))
+
+    if 1 <= seat_no <= len(seats):
+        if seats[seat_no - 1] == "Available":
+            name = input("Enter your name: ")
+            seats[seat_no - 1] = f"Booked by {name}"
+            total_collection += ticket_price
+            print("Ticket Booked Successfully 🎉\n")
+        else:
+            print("Seat already booked ❌\n")
+    else:
+        print("Invalid Seat Number ❌\n")
+
+
+# Function to cancel ticket
+def cancel_ticket():
+    global total_collection
+
+    show_seats()
+    seat_no = int(input("Enter seat number to cancel: "))
+
+    if 1 <= seat_no <= len(seats):
+        if seats[seat_no - 1] != "Available":
+            seats[seat_no - 1] = "Available"
+            total_collection -= ticket_price
+            print("Ticket Cancelled Successfully ✅\n")
+        else:
+            print("Seat is already available ❌\n")
+    else:
+        print("Invalid Seat Number ❌\n")
+
+
+# Function to show total collection
+def show_collection():
+    print("Total Collection: ₹", total_collection, "\n")
+
+
+# Main Menu
+while True:
+    print("🎬 MOVIE TICKET BOOKING SYSTEM")
+    print("1. Show Seats")
+    print("2. Book Ticket")
+    print("3. Cancel Ticket")
+    print("4. Show Total Collection")
+    print("5. Exit")
+
+    choice = int(input("Choose option: "))
+
+    if choice == 1:
+        show_seats()
+    elif choice == 2:
+        book_ticket()
+    elif choice == 3:
+        cancel_ticket()
+    elif choice == 4:
+        show_collection()
+    elif choice == 5:
+        print("Thank You! Visit Again 🎥")
+        break
+    else:
+        print("Invalid Choice ❌\n")
