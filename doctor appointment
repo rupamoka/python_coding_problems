@@ -1,0 +1,59 @@
+appointments = []
+
+def book_appointment():
+    name = input("Enter Patient Name: ")
+    age = int(input("Enter Age: "))
+    doctor = input("Enter Doctor Name: ")
+    date = input("Enter Appointment Date: ")
+
+    appointment = {
+        "Name": name,
+        "Age": age,
+        "Doctor": doctor,
+        "Date": date
+    }
+
+    appointments.append(appointment)
+    print("Appointment Booked Successfully!\n")
+
+def view_appointments():
+    if not appointments:
+        print("No Appointments Found.\n")
+    else:
+        print("---- Appointment List ----")
+        for i, app in enumerate(appointments):
+            print(f"{i+1}. {app}")
+        print()
+
+def cancel_appointment():
+    view_appointments()
+    if appointments:
+        choice = int(input("Enter appointment number to cancel: "))
+        if 0 < choice <= len(appointments):
+            removed = appointments.pop(choice - 1)
+            print("Appointment Cancelled:", removed)
+        else:
+            print("Invalid Choice")   
+    print()
+
+# Main Menu
+print('''
+1. Book Appointment
+2. View Appointments
+3. Cancel Appointment
+4. Exit''')
+while True:
+    
+    option = int(input("Choose Option: "))
+
+    if option == 1:
+        book_appointment()
+    elif option == 2:
+        view_appointments()
+    elif option == 3:
+        cancel_appointment()
+    elif option == 4:
+        print("Thank You!")
+        break
+    else:
+        print("Invalid Option\n")
